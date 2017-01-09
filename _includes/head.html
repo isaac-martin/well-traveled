@@ -1,0 +1,69 @@
+<!-- This is the head of your html, add content here just like you would normally add it to the head. -->
+
+<!-- Meta Data -->
+<meta charset="utf-8">
+
+    <!-- Meta data for SEO purposes. -->
+    <title> {{page.title}} </title>
+    <meta name="description" content="{{page.meta-description}}">
+    <meta name="keywords" content="{{page.meta-keywords}}">
+
+    <!-- meta data to tell the browser that your devide is responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!--  Social media sharing META Tags -->
+    <meta property="og:title" content="{{page.title}}">
+    <meta property="og:description" content="{{page.meta-description}}">
+    <meta property="og:image" content="{{page.featured-image_path}}">
+    <meta property="og:url" content="{{page.url}}">
+    <meta name="twitter:card" content="{{page.meta-description}}">
+    <meta name="og:site_name" content="<!-- ADD SITE NAME HERE -->">
+
+<!-- end of meta tags -->
+
+<!-- Links to CSS Stylesheets  -->
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Gridlex for a simple flexbox grid -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gridlex/2.2.4/gridlex.min.css">
+
+    <!-- Pure Drawer for hamburger menu -->
+    <link rel="stylesheet" href="/css/pure-drawer.css">
+
+    <!-- Pure Drawer for hamburger menu -->
+    <link rel="stylesheet" href="/css/jquery.modal.min.css">
+
+
+    <!-- visit http://realfavicongenerator.net to generate favicons for your site and then place them in the /images/favicons folder -->
+
+
+    <!-- CUSTOM STYLESHEETS - This should always be the last stylesheet in your head -->
+    <link rel="stylesheet" href="/css/main.css">
+
+<!-- end stylesheets -->
+
+<!-- Google Analytics -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHJKXJ');</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-86516587-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- end google analytics -->
