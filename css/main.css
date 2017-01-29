@@ -126,6 +126,10 @@ hr {
 
 .no-padding { padding: 0; }
 
+.cta-text {
+  padding: 200px 0 0 0;
+}
+
 img.headshot{
   max-width: 45%;
 }
@@ -152,6 +156,10 @@ nav a:hover {
   max-width: 15rem;
   margin: 0.5em 0;
 }
+
+/*.header-active .logo {
+  max-height: 3rem;
+}*/
 
 footer nav a {
   padding: 0.5em;
@@ -320,13 +328,13 @@ ol, ul  { padding-left: 0;
   header {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    /*position: fixed;
+    position: fixed;
     width: 100vw;
-    margin-bottom: 200px;*/
+    /*margin-bottom: 200px;*/
   }
 
   .header-active {
-    background: rgba(255, 0, 0, 0.5);
+    background: rgba(44, 62, 80,1.0);
   }
 
 
