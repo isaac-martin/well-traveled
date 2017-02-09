@@ -6,7 +6,7 @@ title: Shop
 <section class="tall grid">
 
   <div class="col-8_sm-12 post-body">
-      <h1> {{page.title}} </h1>
+      <h1 class="dark-text"> {{page.title}} </h1>
       <p class="post-meta">{{page.date | date_to_string }} | Written by {{page.author}}</p>
       <img class="full-width" src="{{page.image_path}}">
 
@@ -17,13 +17,13 @@ title: Shop
       <div class="social-share">
         <h4> Did you <i class="fa fa-heart featured"></i> this? Share it on ... </h4>
         <nav>
-            <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" rel="nofollow" target="_blank" title="Share on Twitter">
+            <a class="dark-text" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" rel="nofollow" target="_blank" title="Share on Twitter">
                 <i class="fa fa-twitter"></i>Twitter
             </a>
-            <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Facebook">
+            <a class="dark-text" href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Facebook">
                 <i class="fa fa-facebook"></i>Facebook
             </a>
-            <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Google+">
+            <a class="dark-text" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Google+">
               <i class="fa fa-google-plus"></i>Google +
             </a>
         </nav>
@@ -31,7 +31,7 @@ title: Shop
 
   </div>
 
-  <div class="col-4_sm-12 mob-hide sidebar">
+  <!-- <div class="col-4_sm-12 mob-hide sidebar">
       <div>
         <h3> This is a sidebar box </h3>
         <p> You can edit the content of the sidebar box in your post layout. </p>
@@ -41,4 +41,4 @@ title: Shop
         <p> You could put anything you want in here, like links to your social or featured articles, a newsletter signup, etc </p>
       </div>
   </div>
-</section>
+</section> -->
