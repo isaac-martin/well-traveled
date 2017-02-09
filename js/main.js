@@ -1,4 +1,12 @@
 $(document).ready(function() {
+
+var controller = new ScrollMagic.Controller();
+
+  new ScrollMagic.Scene({triggerElement: ".animation-trigger", triggerHook: 'onLeave'})
+					.setClassToggle("header", "header-active") // add class toggle
+					.addTo(controller);
+
+
   $('#mc-embedded-subscribe-form').formchimp();
 
   $('#contact-form').submit(function(e) {
@@ -27,7 +35,7 @@ $(document).ready(function() {
   $('.submit-fail, .submit-success').click(function() {
     $(this).hide();
   })
-  
+
 
   // for counter
   $('.count').each(function () {
@@ -41,15 +49,4 @@ $(document).ready(function() {
           }
       });
   });
-
-  // $(window).scroll(function() {
-  //     var scroll = $(window).scrollTop();
-  //
-  //     if (scroll >= 100) {
-  //         console.log(scrolled);
-  //     } else {
-  //       console.log(notscrolled);
-  //     }
-  //       console.log(notscrolled);
-  // });
   });
