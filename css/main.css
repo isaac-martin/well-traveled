@@ -149,6 +149,12 @@ section.staff{
   padding-bottom: 1vh;
 }
 
+/* ---- Color Overrides --- */
+
+section, footer, body {
+  background-color: white;
+}
+
 /* ----- HEADER & FOOTER --------------------------- */
 nav a {
   text-decoration: none;
