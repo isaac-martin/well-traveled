@@ -155,11 +155,7 @@ section.staff{
 
 /* ---- Color Overrides --- */
 
-<<<<<<< HEAD
-section, footer, body, footer.grid {
-=======
 section, footer, body {
->>>>>>> 139f89151890da21a9daaf0b24357898c3ab11cb
   background-color: white;
 }
 
