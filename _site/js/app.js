@@ -1,41 +1,12 @@
 
-
 //////////////////////////////////////////////////// RELATED TO KEEN.IO ////////////////////////////////////////
 
 var client = new Keen({
-	projectId: '58ac48a78db53dfda8a885e1', // String (required always)
-	writeKey: '31e5cf8e0dd308948a36e0be4158577f4f8ad589c1a07939608977f23add7f50b7bdfebc9bab874611ab8477fff5134a82c64d1bef38afb56ca18cfe964ccf09024ad474b97ac4b12de413002d560c5fb7be7d9648993f73cafc2a0e17e01dca',   // String (required for sending data)
-	readKey: '632ebb3407ddb2047e0f7c505c097e2af55b13479a606e44142920ae2f1284db72cca1817cce8cbaa16620f4e3dadd719fb8972e5cd20f585b2094f160f0da68082e8388b97dc82a026caea995e3f6c33e8b3440e4703050dcddbac8af704a82'      // String (required for querying data)
+	projectId: '58ac414f8db53dfda8a885d3', // String (required always)
+	writeKey: 'B9207BB668E4A37CCEF39253F8CBF891EB7EE856E9CCCF66970A782B1AE4CB0370ED3AD4F68C2CDE4236E0CACEFCC7C40CC459A355F28D96981CD3E2FD81954F2D1D1072CDF503CA21BA9CF711B4C3F835A3C67B8D27A0DF6DFF36C7CDDCA753',   // String (required for sending data)
+	readKey: '12F3D0E6BA16F21DF09BFE72A52AACB56ECD1247C8FDD8F9C18504A3EDD85BE1DEC8A937E01A83C9186C8DEE3A7A6218F020DFEBA64EC6D9D5C184A0EE4D10D1003997B3F38E11318B4CE8BA8AB5BE7D8136187112B1262F9A55884AE6A0F369'      // String (required for querying data)
 
   });
-  // Create a data object with the properties you want to send
- 
-	var purchaseEvent = {
-	  "data": [
-	    {
-		  item: "golden gadget",  
-		  price: 2550, // track dollars as cents
-		  referrer: document.referrer,
-		  keen: {
-			timestamp: new Date().toISOString()
-		  }
-		}  
-	  ]
-	};
-
-	var multipleEvent = {
-	  "purchases": [
-		{ item: "golden gadget the new ", price: 2550, transaction_id: "f029342" },
-		{ item: "a different gadget the new", price: 1775, transaction_id: "f029342" }
-	  ],
-	  "transactions": [
-		{
-		  id: "f02934212",
-		  items: 2,
-		  total: 4325
-		}
-	  ]
-	};
 
 	function send(userdata){
 
@@ -57,7 +28,7 @@ var client = new Keen({
 	}
 
 	function fetch(){
-		
+
 		Keen.ready(function(){
 
 		  // Create a query instance
@@ -81,9 +52,9 @@ var client = new Keen({
 
 		});
 	}
-	
+
 	function fetchJava(){
-		
+
 		Keen.ready(function(){
 
 		  // Create a query instance
@@ -110,7 +81,7 @@ var client = new Keen({
 ///////////////////////////////////////  RELATED TO COOKIE  ////////////////////////////////////////////////////////
 
 	function browserType(){
-		
+
 		if(window.opr)
 			return "Opera";
 		else if(typeof InstallTrigger !== 'undefined')
@@ -125,31 +96,17 @@ var client = new Keen({
 	document.addEventListener("click",fn,true);
 	// ===== Method to run when the page is loaded  ===== //
 	window.onpageshow = function(){
-		
+
 		console.log("ON load running");
 
-		// Step 1: Check for the Cookie		--> Currently we are manually creating the cookie, 
+		// Step 1: Check for the Cookie		--> Currently we are manually creating the cookie,
 		checkCookie("WT");
-		/*var userdata = {
-		
-			"data": [
-			
-				{ 
-				  page: window.location.href,  
-				  platform: navigator.platform, 
-				  vendor: navigator.vendor,
-				  language: navigator.language,
-				  languages: navigator.languages,
-				  referrer: document.referrer,
-				  timestamp: new Date().toISOString()
-				}  
-			]  
-		};*/
+
 		localStorage.setItem("wt_time", new Date());
 		var userdata = {
-			
-		  page: window.location.href,  
-		  platform: navigator.platform, 
+
+		  page: window.location.href,
+		  platform: navigator.platform,
 		  vendor: browserType(),
 		  language: navigator.language,
 		  languages: navigator.languages,
@@ -158,13 +115,11 @@ var client = new Keen({
 		  duration: 0,
 		  cookie: getCookie("WT")
 		};
-		
+		send(userdata);
 		console.log(localStorage.getItem("wt_time"));
-		//console.log(userdata);
-		//send(userdata);
-		//console.log("Sent", cookiedata);
+
 	};
-	
+
 	// ===== Method to set cookie in the browser if does not exists ===== //
 	function setCookie(cname, cvalue, exdays) {
 		var d = new Date();
@@ -204,18 +159,18 @@ var client = new Keen({
 		return "";
 	}
 	function createHash(){
-		
+
 		return calculateHash()+""+calculateHash()+""+calculateHash()+""+calculateHash();
 	}
 	function calculateHash(){
-		
+
 		var time = new Date().toISOString();
 		var url = window.location.href;
 		var random = Math.random();
 		var hash = 0;
 		var str = url+""+time+""+random;
 		for(var i=0;i<str.length;i++){
-			
+
 			var ch = str.charAt(i);
 			hash = ((hash<<5)-hash)+ch;
 			hash = hash & hash;
@@ -223,23 +178,23 @@ var client = new Keen({
 		return hash;
 	}
 	function fn(){
-		
+
 		console.log("Clicked");
 	}
-	
-////////////// To send details when moving away from page ////////////////////////
 
+////////////// To send details when moving away from page ////////////////////////
+/*
 window.onbeforeunload = function(e) {
-    
+
 	//return "Going?";
 	var d1 = new Date(localStorage.getItem("wt_time"));
 	var d2 = new Date();
 	var timespent = d2 - d1;
 	localStorage.setItem("duration", timespent);
 	var userdata = {
-			
-	  page: window.location.href,  
-	  platform: navigator.platform, 
+
+	  page: window.location.href,
+	  platform: navigator.platform,
 	  vendor: browserType(),
 	  language: navigator.language,
 	  languages: navigator.languages,
@@ -262,39 +217,17 @@ window.onbeforeunload = function(e) {
 	});
 
 	for(var i=0;i<1000;i++){
-		
+
 		console.log(i);
 	}
 	//send(userdata);
 }
 
 $(document).ready(function(){
-	
+
 	$("a").click(function(){
-		
+
 		localStorage.setItem("nextUrl",this.href);
 	});
 });
-/*
-window.onunload = function(){
-	
-	var d1 = new Date(localStorage.getItem("wt_time"));
-	var d2 = new Date();
-	var timespent = d2 - d1;
-	localStorage.setItem("duration", timespent);
-	var userdata = {
-			
-	  page: window.location.href,  
-	  platform: navigator.platform, 
-	  vendor: browserType(),
-	  language: navigator.language,
-	  languages: navigator.languages,
-	  referrer: document.referrer,
-	  timestamp: localStorage.getItem("wt_time").toString(),
-	  duration: timespent,
-	  cookie: getCookie("WT")
-	};
-	send(userdata);
-	console.log("Unload",userdata);
-};
 */
