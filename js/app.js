@@ -86,19 +86,19 @@ var client = new Keen({
 	function findMobile(){
 		
 		if( navigator.userAgent.match(/Android/i))
-			return navigator.userAgent.match(/Android/i);
+			return "Android";
 		else if(navigator.userAgent.match(/webOS/i))
-			return navigator.userAgent.match(/webOS/i);
+			return "webOS";
 		else if(navigator.userAgent.match(/iPhone/i))
-			return navigator.userAgent.match(/iPhone/i);
+			return "iPhone";
 		else if(navigator.userAgent.match(/iPad/i))
-			return navigator.userAgent.match(/iPad/i);
+			return "iPad";
 		else if(navigator.userAgent.match(/iPod/i))
-			return navigator.userAgent.match(/iPod/i);
+			return "iPod";
 		else if(navigator.userAgent.match(/BlackBerry/i))
-			return navigator.userAgent.match(/BlackBerry/i)
+			return "BlackBerry";
 		else if(navigator.userAgent.match(/Windows Phone/i))
-			return navigator.userAgent.match(/Windows Phone/i);
+			return "Windows Phone";
 		else
 			return "No Mobile device identified";
 	}
