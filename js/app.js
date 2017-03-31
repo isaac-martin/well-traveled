@@ -9,34 +9,8 @@ var client = new Keen({
 
   });
   // Create a data object with the properties you want to send
-
-	var purchaseEvent = {
-	  "data": [
-	    {
-		  item: "golden gadget",
-		  price: 2550, // track dollars as cents
-		  referrer: document.referrer,
-		  keen: {
-			timestamp: new Date().toISOString()
-		  }
-		}
-	  ]
-	};
-
-	var multipleEvent = {
-	  "purchases": [
-		{ item: "golden gadget the new ", price: 2550, transaction_id: "f029342" },
-		{ item: "a different gadget the new", price: 1775, transaction_id: "f029342" }
-	  ],
-	  "transactions": [
-		{
-		  id: "f02934212",
-		  items: 2,
-		  total: 4325
-		}
-	  ]
-	};
-
+ 
+	
 	function send(userdata){
 
 		console.log("Sending");
@@ -57,7 +31,7 @@ var client = new Keen({
 	}
 
 	function fetch(){
-
+		
 		Keen.ready(function(){
 
 		  // Create a query instance
@@ -81,9 +55,9 @@ var client = new Keen({
 
 		});
 	}
-
+	
 	function fetchJava(){
-
+		
 		Keen.ready(function(){
 
 		  // Create a query instance
@@ -109,8 +83,27 @@ var client = new Keen({
 	}
 ///////////////////////////////////////  RELATED TO COOKIE  ////////////////////////////////////////////////////////
 
+	function findMobile(){
+		
+		if( navigator.userAgent.match(/Android/i))
+			return navigator.userAgent.match(/Android/i);
+		else if(navigator.userAgent.match(/webOS/i))
+			return navigator.userAgent.match(/webOS/i);
+		else if(navigator.userAgent.match(/iPhone/i))
+			return navigator.userAgent.match(/iPhone/i);
+		else if(navigator.userAgent.match(/iPad/i))
+			return navigator.userAgent.match(/iPad/i);
+		else if(navigator.userAgent.match(/iPod/i))
+			return navigator.userAgent.match(/iPod/i);
+		else if(navigator.userAgent.match(/BlackBerry/i))
+			return navigator.userAgent.match(/BlackBerry/i)
+		else if(navigator.userAgent.match(/Windows Phone/i))
+			return navigator.userAgent.match(/Windows Phone/i);
+		else
+			return "No Mobile device identified";
+	}
 	function browserType(){
-
+		
 		if(window.opr)
 			return "Opera";
 		else if(typeof InstallTrigger !== 'undefined')
@@ -125,31 +118,17 @@ var client = new Keen({
 	document.addEventListener("click",fn,true);
 	// ===== Method to run when the page is loaded  ===== //
 	window.onpageshow = function(){
-
+		
 		console.log("ON load running");
 
-		// Step 1: Check for the Cookie		--> Currently we are manually creating the cookie,
+		// Step 1: Check for the Cookie		--> Currently we are manually creating the cookie, 
 		checkCookie("WT");
-		/*var userdata = {
-
-			"data": [
-
-				{
-				  page: window.location.href,
-				  platform: navigator.platform,
-				  vendor: navigator.vendor,
-				  language: navigator.language,
-				  languages: navigator.languages,
-				  referrer: document.referrer,
-				  timestamp: new Date().toISOString()
-				}
-			]
-		};*/
+		
 		localStorage.setItem("wt_time", new Date());
 		var userdata = {
-
-		  page: window.location.href,
-		  platform: navigator.platform,
+			
+		  page: window.location.href,  
+		  platform: navigator.platform, 
 		  vendor: browserType(),
 		  language: navigator.language,
 		  languages: navigator.languages,
@@ -158,13 +137,11 @@ var client = new Keen({
 		  duration: 0,
 		  cookie: getCookie("WT")
 		};
-
+		
 		console.log(localStorage.getItem("wt_time"));
-		//console.log(userdata);
-		//send(userdata);
-		//console.log("Sent", cookiedata);
-	};
 
+	};
+	
 	// ===== Method to set cookie in the browser if does not exists ===== //
 	function setCookie(cname, cvalue, exdays) {
 		var d = new Date();
@@ -204,18 +181,18 @@ var client = new Keen({
 		return "";
 	}
 	function createHash(){
-
+		
 		return calculateHash()+""+calculateHash()+""+calculateHash()+""+calculateHash();
 	}
 	function calculateHash(){
-
+		
 		var time = new Date().toISOString();
 		var url = window.location.href;
 		var random = Math.random();
 		var hash = 0;
 		var str = url+""+time+""+random;
 		for(var i=0;i<str.length;i++){
-
+			
 			var ch = str.charAt(i);
 			hash = ((hash<<5)-hash)+ch;
 			hash = hash & hash;
@@ -223,23 +200,23 @@ var client = new Keen({
 		return hash;
 	}
 	function fn(){
-
+		
 		console.log("Clicked");
 	}
-
+	
 ////////////// To send details when moving away from page ////////////////////////
 
 window.onbeforeunload = function(e) {
-
+    
 	//return "Going?";
 	var d1 = new Date(localStorage.getItem("wt_time"));
 	var d2 = new Date();
 	var timespent = d2 - d1;
 	localStorage.setItem("duration", timespent);
 	var userdata = {
-
-	  page: window.location.href,
-	  platform: navigator.platform,
+			
+	  page: window.location.href,  
+	  platform: navigator.platform, 
 	  vendor: browserType(),
 	  language: navigator.language,
 	  languages: navigator.languages,
@@ -247,6 +224,7 @@ window.onbeforeunload = function(e) {
 	  timestamp: localStorage.getItem("wt_time").toString(),
 	  duration: timespent,
 	  nextUrl: localStorage.getItem("nextUrl"),
+	  mobile: findMobile(),
 	  cookie: getCookie("WT")
 	};
 	localStorage.removeItem("nextUrl");
@@ -262,39 +240,16 @@ window.onbeforeunload = function(e) {
 	});
 
 	for(var i=0;i<1000;i++){
-
+		
 		console.log(i);
 	}
 	//send(userdata);
 }
 
 $(document).ready(function(){
-
+	
 	$("a").click(function(){
-
+		
 		localStorage.setItem("nextUrl",this.href);
 	});
 });
-/*
-window.onunload = function(){
-
-	var d1 = new Date(localStorage.getItem("wt_time"));
-	var d2 = new Date();
-	var timespent = d2 - d1;
-	localStorage.setItem("duration", timespent);
-	var userdata = {
-
-	  page: window.location.href,
-	  platform: navigator.platform,
-	  vendor: browserType(),
-	  language: navigator.language,
-	  languages: navigator.languages,
-	  referrer: document.referrer,
-	  timestamp: localStorage.getItem("wt_time").toString(),
-	  duration: timespent,
-	  cookie: getCookie("WT")
-	};
-	send(userdata);
-	console.log("Unload",userdata);
-};
-*/
