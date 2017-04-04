@@ -225,6 +225,7 @@ window.onbeforeunload = function(e) {
 	  duration: timespent,
 	  nextUrl: localStorage.getItem("nextUrl"),
 	  mobile: findMobile(),
+	  scrolled: localStorage.getItem("%scroll"),
 	  cookie: getCookie("WT")
 	};
 	localStorage.removeItem("nextUrl");
@@ -246,10 +247,21 @@ window.onbeforeunload = function(e) {
 	//send(userdata);
 }
 
+window.addEventListener('scroll', function(){
+	
+	if(document.body.scrollTop > localStorage.getItem("scroll")){
+
+		localStorage.setItem("scroll",document.body.scrollTop);
+		localStorage.setItem("%scroll",parseInt(localStorage.getItem("scroll"))/(document.body.scrollHeight-336)*100);
+	}	
+});
 $(document).ready(function(){
 	
+	localStorage.setItem("scroll",document.body.scrollTop);
+	localStorage.setItem("%scroll",parseInt(localStorage.getItem("scroll"))/(document.body.scrollHeight-336)*100);
 	$("a").click(function(){
 		
 		localStorage.setItem("nextUrl",this.href);
 	});
 });
+
