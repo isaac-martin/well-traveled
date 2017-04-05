@@ -247,21 +247,27 @@ window.onbeforeunload = function(e) {
 	//send(userdata);
 }
 
-window.addEventListener('scroll', function(){
-	
-	if(document.body.scrollTop > localStorage.getItem("scroll")){
+if($(window).height()!=document.body.scrollHeight){
 
-		localStorage.setItem("scroll",document.body.scrollTop);
-		localStorage.setItem("%scroll",parseInt(localStorage.getItem("scroll"))/(document.body.scrollHeight-336)*100);
-	}	
-});
+	$(document).scroll(function(){
+
+		if(window.scrollY+ $(window).height() > parseInt(localStorage.getItem("scroll"))){
+
+			localStorage.setItem("scroll",(window.scrollY + $(window).height()));
+			localStorage.setItem("%scroll",parseFloat(localStorage.getItem("scroll"))/(document.body.scrollHeight)*100);
+		}	
+	});
+}
 $(document).ready(function(){
 	
-	localStorage.setItem("scroll",document.body.scrollTop);
-	localStorage.setItem("%scroll",parseInt(localStorage.getItem("scroll"))/(document.body.scrollHeight-336)*100);
+	if($(window).height()!=document.body.scrollHeight){
+
+		console.log("Logs",window.scrollY,$(window).height());
+		localStorage.setItem("scroll",(window.scrollY + $(window).height()));
+		localStorage.setItem("%scroll",parseFloat(localStorage.getItem("scroll"))/(document.body.scrollHeight)*100);
+	}
 	$("a").click(function(){
 		
 		localStorage.setItem("nextUrl",this.href);
 	});
 });
-
