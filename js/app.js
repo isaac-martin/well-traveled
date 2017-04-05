@@ -3,9 +3,9 @@
 //////////////////////////////////////////////////// RELATED TO KEEN.IO ////////////////////////////////////////
 
 var client = new Keen({
-	projectId: '58ac48a78db53dfda8a885e1', // String (required always)
-	writeKey: '31e5cf8e0dd308948a36e0be4158577f4f8ad589c1a07939608977f23add7f50b7bdfebc9bab874611ab8477fff5134a82c64d1bef38afb56ca18cfe964ccf09024ad474b97ac4b12de413002d560c5fb7be7d9648993f73cafc2a0e17e01dca',   // String (required for sending data)
-	readKey: '632ebb3407ddb2047e0f7c505c097e2af55b13479a606e44142920ae2f1284db72cca1817cce8cbaa16620f4e3dadd719fb8972e5cd20f585b2094f160f0da68082e8388b97dc82a026caea995e3f6c33e8b3440e4703050dcddbac8af704a82'      // String (required for querying data)
+	projectId: '58e54fdc0935ce40a59fa8ff', // String (required always)
+	writeKey: 'F4A8F46FB5C476650013EC18CF2AF7917C898719949ED4C2F1384E72976913A6F6C73C75827CD46AC5F1E679FADB748423CCE26EA256DE5C2F85A2DF4259799CDE6119740D3F2C36AF59E89CDCAD9F4A6DF50A11E012BEDB017267C40FE94E59',   // String (required for sending data)
+	readKey: 'CD473F0686A222EA4BD7AA92C846FE721A9222EB06AC738BD4A39DEF01F883AD03B8FEF831E8016226B6B65F84CFC35C82C056FC56292A54A359F52997BDCABB9AD0D02F476931BF82439C7EDF5F52A9BE7DFECA303D46B8720CF5531D90B29C'      // String (required for querying data)
 
   });
   // Create a data object with the properties you want to send
@@ -246,7 +246,6 @@ window.onbeforeunload = function(e) {
 	}
 	//send(userdata);
 }
-
 if($(window).height()!=document.body.scrollHeight){
 
 	$(document).scroll(function(){
